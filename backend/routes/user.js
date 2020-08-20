@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const userCtrl = require('../controllers/user');
-const ExpressBrute = require('express-brute');
+const ExpressBrute = require('express-brute');//l'implémentation de ce package permet d'éviter les attaques par force brute
 const store = new ExpressBrute.MemoryStore();
 const bruteforce = new ExpressBrute(store);
 

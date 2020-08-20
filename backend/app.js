@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
 
 const path = require('path');
 const stuffRoutes = require('./routes/stuff');
@@ -14,6 +15,9 @@ mongoose.connect('mongodb+srv://sadeu:Sri19922@cluster0.xcdgv.mongodb.net/test?r
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 const app = express();
+
+//On utilise helmet pour plusieurs raisons notamment la mise en place du X-XSS-Protection afin d'activer le filtre de script intersites(XSS) dans les navigateurs web
+app.use(helmet());
 
 //Débloquer certains systèmes de sécurité CORS
 app.use((req, res, next) => {
